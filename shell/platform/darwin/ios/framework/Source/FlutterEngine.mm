@@ -89,6 +89,25 @@
   [super dealloc];
 }
 
+- (void)reset {
+  [self resetChannels];
+  _shell.reset();
+  _threadHost.Reset();
+  _publisher.reset();
+  _platformViewsController.reset();
+}
+
+- (void)resetChannels {
+  _localizationChannel.reset();
+  _navigationChannel.reset();
+  _platformChannel.reset();
+  _platformViewsChannel.reset();
+  _textInputChannel.reset();
+  _lifecycleChannel.reset();
+  _systemChannel.reset();
+  _settingsChannel.reset();
+}
+
 - (shell::Shell&)shell {
   FML_DCHECK(_shell);
   return *_shell;
